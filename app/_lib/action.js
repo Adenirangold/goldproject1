@@ -1,6 +1,6 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { auth, signIn } from "./auth";
+import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
 import { redirect } from "next/navigation";
 
@@ -8,7 +8,7 @@ export const signInAction = async function () {
   await signIn("google", { redirectTo: "/account" });
 };
 export const signOutAction = async function () {
-  await signIn("google", { redirectTo: "/ " });
+  await signOut("google", { redirectTo: "/ " });
 };
 export const updateGuestAction = async function (formData) {
   const session = await auth();
